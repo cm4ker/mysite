@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --background: white;
+  --text-primary: black;
+  --text-secondary: royalblue;
+  --accent: purple;
+
+  --background1-raw: 214, 214, 214;
+  --background2-raw: 179, 179, 179;
+
+  --background1: rgb(var(--background1-raw));
+  --background2: rgb(var(--background2-raw));
+
+}
+
+[data-theme='dark'] {
+  --background: black;
+
+  --background1-raw: 46, 46, 46;
+  --background2-raw: 32, 32, 32;
+
+  --background1: rgb(var(--background1-raw));
+  --background2: rgb(var(--background2-raw));
+
+  --text-primary: white;
+  --text-secondary: gray;
+  --accent: darkred;
+}
