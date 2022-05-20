@@ -1,0 +1,41 @@
+.card{
+    width: 200px;
+    height: 430px;
+    background-color: rgba(var(--background1-raw),0.65);
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    margin-left: 20px;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    margin: 20px 0 20px 0;
+}
+
+.photo img{
+    height: 200px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.profession{
+    padding: 20px;
+    text-align: center;
+}
+
+.contact {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contact i{
+    font-size: 2rem;
+}
+.contact a
+{
+    color: var(--text-primary);
+}
