@@ -22,7 +22,7 @@ const Card = () => {
                 <img src={me} alt='' />
             </div>
             <div className="profession">.Net developer</div>
-            <div className="bio"> I live {age.getFullYear()}y {age.getMonth()}m {age.getDate()}d</div>
+            <div className="bio"> I am {age.getFullYear()}y {age.getMonth()}m {age.getDate()}d old</div>
             <div className="contact">
                 <a href='https://twitter.com/cm4ker'><i className='fa fa-twitter'></i></a>
                 <a href="https://t.me/cm4ker"><i className='fa fa-telegram'></i></a>
