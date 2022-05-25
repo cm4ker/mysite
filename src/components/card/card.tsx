@@ -29,6 +29,10 @@ const Card = () => {
                 <a href="mailto:cm4ker@gmail.com"><i className="fa fa-envelope"></i></a>
                 <a href="https://github.com/cm4ker"><i className="fa fa-github"></i></a>
             </div>
+            <div className="loc">
+            <p>Location: Russia</p>
+            <p>Reloc: no</p></div>
+            
         </div>
     );
 }

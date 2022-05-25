@@ -26,7 +26,7 @@ const Content = () => {
             <h1>Experience</h1>
             <ul>
                 <li>Feb 2021 — Present <span className="work">Freelance</span>
-                    <p>1. Platform for rapid creating data applications (aquila) (language + metadata)</p>
+                    <p>1. Platform for rapid creating data applications (<a href='https://github.com/cm4ker/platform'>aquila</a>) (language + metadata)</p>
                     <p>2. Streaming system for advertisement (aspnetcore + blazor server side + .net core 6)</p>
                 </li>
                 <li>Feb 2020 — Feb 2021 <span className="work">Pharma Trade Service Teamlead.</span>
