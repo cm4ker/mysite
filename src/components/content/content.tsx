@@ -16,7 +16,7 @@ const Content = () => {
                     <li> BI (ETL, SSAS, SSIS)</li>
                     <li> Compiler building</li>
                     <li> Design applications</li>
-                    <li> Language : Russian, English (pre intermidiate)</li>
+                    <li> Language : Russian, English (pre intermediate)</li>
                 </ul>
                 </div>
                 <div>
