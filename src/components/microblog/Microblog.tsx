@@ -57,4 +57,6 @@ const Microblog: React.FC = () => {
       </div>
     </section>
   );
-};export default Microblog;
+};
+
+export default Microblog;
