@@ -1,32 +1,49 @@
-import React, { MouseEventHandler, useState } from "react";
-import Clock from '../clock/clock';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './nav.css';
-
-import useLocalStorage from 'use-local-storage';
-import Toggle from "../toggle/toggle";
+import me from '../../me.jpg';
 
 interface NavProps {
-    switchTheme: MouseEventHandler,
-    currentTheme: Function
+  theme: 'light' | 'dark';
+  switchTheme: () => void;
+  onSearchClick: () => void;
 }
 
-const Nav = ({ switchTheme, currentTheme }: NavProps) => {
-
-    return (
-        <div className="nav">
-            
-            <div style={{float:"right"}}>
-                <div>
-                    <div>Time: </div>
-                    <Clock />
-                </div>
-                <div style={{margin: "0 0 0 20px"}}>
-                    <div>Dark mode: </div>
-                    <Toggle isToggled={currentTheme() === 'dark'} onToggle={switchTheme} />
-                </div>
-            </div>
-        </div>)
-}
-
+const Nav: React.FC<NavProps> = ({ theme, switchTheme, onSearchClick }) => {
+  return (
+    <header>
+      <div className="container">
+        <nav>
+          <button className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <img src={me} alt="Nikita Zenkov" className="logo-avatar" />
+            <span className="logo-name">Никита Зенков</span>
+          </button>
+          <div className="nav-actions">
+            <button
+              className="search-button"
+              onClick={onSearchClick}
+              aria-label="Поиск"
+              title="Поиск"
+            >
+              <FontAwesomeIcon icon={['fas', 'search']} />
+              <span className="search-kbd">
+                <kbd>Ctrl</kbd>
+                <kbd>K</kbd>
+              </span>
+            </button>
+            <button
+              className="theme-toggle"
+              onClick={switchTheme}
+              aria-label="Переключить тему"
+              title={theme === 'dark' ? 'Светлая тема' : 'Тёмная тема'}
+            >
+              <FontAwesomeIcon icon={['fas', theme === 'dark' ? 'sun' : 'moon']} />
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+};
 
 export default Nav;

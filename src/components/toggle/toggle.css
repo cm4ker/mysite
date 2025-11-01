@@ -21,7 +21,7 @@
     bottom: 0;
     background-color: #ccc;
     transition: 0.4s;
-    border-radius: 34px;
+    border-radius: var(--radius-full);
 }
 
 .slider:before{

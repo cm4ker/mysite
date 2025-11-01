@@ -1,0 +1,43 @@
+/* Footer - Zed style, компактнее */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0 30px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-top: 80px;
+}
+
+.social-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 16px;
+}
+
+.social-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.social-links a svg {
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: var(--accent);
+}
+
+.social-links a:hover svg,
+.social-links a:focus svg {
+  transform: translateY(-2px);
+}

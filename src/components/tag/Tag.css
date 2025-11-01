@@ -1,0 +1,27 @@
+/* Unified Tag Component */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.tag-icon {
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hover effect when inside hoverable containers */
+*:hover > .tag,
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
