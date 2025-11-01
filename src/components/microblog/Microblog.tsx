@@ -46,14 +46,6 @@ const Microblog: React.FC = () => {
                   ))}
                 </div>
                 <div className="post-meta">
-                  <span>
-                    <FontAwesomeIcon icon={['fas', 'heart']} />
-                    {post.likes}
-                  </span>
-                  <span>
-                    <FontAwesomeIcon icon={['fas', 'eye']} />
-                    {post.views}
-                  </span>
                   <span className="read-more">
                     Читать полностью
                     <FontAwesomeIcon icon={['fas', 'arrow-right']} />
