@@ -59,9 +59,16 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // Command palette toggle
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      if ((e.metaKey || e.ctrlKey) && e.code === "KeyK") {
         e.preventDefault();
         toggleCommandPalette();
+        return;
+      }
+
+      // Close command palette on Escape
+      if (e.key === "Escape" && commandPaletteOpen) {
+        e.preventDefault();
+        setCommandPaletteOpen(false);
         return;
       }
 
@@ -87,27 +94,22 @@ function App() {
       };
 
       // Handle keyboard shortcuts
-      switch (e.key.toLowerCase()) {
-        case "t":
+      switch (e.code) {
+        case "KeyT":
           switchTheme();
           break;
-        case "m":
+        case "KeyM":
           scrollToSection("microblog");
           break;
-        case "e":
+        case "KeyE":
           scrollToSection("experience");
           break;
-        case "c":
+        case "KeyC":
           scrollToSection("contact");
           break;
-        case "h":
+        case "KeyH":
           window.scrollTo({ top: 0, behavior: "smooth" });
           break;
-      }
-
-      // Close on Escape
-      if (e.key === "Escape" && commandPaletteOpen) {
-        setCommandPaletteOpen(false);
       }
     };
 
