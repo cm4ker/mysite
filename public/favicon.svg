@@ -1,0 +1,26 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#1e40af" rx="4"/>
+  
+  <!-- Centered pixel N -->
+  <g transform="translate(7, 7)">
+    <!-- Left column -->
+    <rect x="0" y="0" width="3" height="3" fill="white"/>
+    <rect x="0" y="4" width="3" height="3" fill="white"/>
+    <rect x="0" y="8" width="3" height="3" fill="white"/>
+    <rect x="0" y="12" width="3" height="3" fill="white"/>
+    <rect x="0" y="16" width="3" height="3" fill="white"/>
+    
+    <!-- Diagonal accent -->
+    <rect x="4" y="4" width="3" height="3" fill="#60a5fa"/>
+    <rect x="8" y="8" width="3" height="3" fill="#60a5fa"/>
+    <rect x="12" y="12" width="3" height="3" fill="#60a5fa"/>
+    
+    <!-- Right column -->
+    <rect x="16" y="0" width="3" height="3" fill="white"/>
+    <rect x="16" y="4" width="3" height="3" fill="white"/>
+    <rect x="16" y="8" width="3" height="3" fill="white"/>
+    <rect x="16" y="12" width="3" height="3" fill="white"/>
+    <rect x="16" y="16" width="3" height="3" fill="white"/>
+  </g>
+</svg>
