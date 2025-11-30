@@ -41,16 +41,16 @@ html {
 }
 
 [data-theme="light"] .App {
-  /* Фон миллиметровки для светлой темы - более мягкий */
+  /* Фон миллиметровки для светлой темы */
   background-image: 
     /* Радиальный градиент для затухания по краям */
     radial-gradient(ellipse at center, transparent 0%, transparent 40%, var(--bg) 100%),
-    linear-gradient(rgba(91, 122, 184, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 122, 184, 0.025) 1px, transparent 1px),
-    linear-gradient(rgba(91, 122, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 122, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(91, 122, 184, 0.06) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(91, 122, 184, 0.06) 2px, transparent 2px);
+    linear-gradient(rgba(91, 122, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 122, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(91, 122, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 122, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(91, 122, 184, 0.18) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(91, 122, 184, 0.18) 2px, transparent 2px);
   background-size: 
     100% 100%,
     10px 10px,
@@ -60,6 +60,7 @@ html {
     100px 100px,
     100px 100px;
   background-color: var(--bg);
+  background-attachment: fixed;
 }
 
 body {
@@ -103,6 +104,7 @@ body {
     100px 100px,
     100px 100px;
   background-color: var(--bg);
+  background-attachment: fixed;
 }
 
 /* Main content */
@@ -141,6 +143,8 @@ main .container {
   padding: 28px;
   transition: all 0.2s ease;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .card:hover,

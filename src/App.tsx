@@ -7,6 +7,7 @@ import PostPage from "./pages/PostPage";
 import Footer from "./components/footer/Footer";
 import CommandPalette from "./components/command-palette/CommandPalette";
 import KeyboardHint from "./components/keyboard-hint/KeyboardHint";
+import GridAnimation from "./components/grid-animation";
 
 function App() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -120,6 +121,7 @@ function App() {
   return (
     <Router>
       <div className="App" data-theme={theme}>
+        <GridAnimation />
         <KeyboardHint />
         <Header
           theme={theme}
