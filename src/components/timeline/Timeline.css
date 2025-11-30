@@ -105,6 +105,8 @@
     cursor: pointer;
     min-width: 180px;
     max-width: 280px;
+    position: relative;
+    z-index: 1;
 }
 
 .timeline-item:hover .timeline-header-compact {
