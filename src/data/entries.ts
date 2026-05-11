@@ -41,6 +41,13 @@ export const profile: Profile = {
 
 export const entries: Entry[] = [
   {
+    type: "talk",
+    title: "Построение семантического поиска по документации с использованием Semantic Kernel и Kernel Memory",
+    date: "2025-09-18",
+    venue: "DotNext 2025",
+    url: "https://dotnext.ru/archive/2025/talks/4c1cc34793844f799eda61aa0cee7ca4/",
+  },
+  {
     type: "work",
     title: ".NET Developer",
     company: "Dynamicsun",
