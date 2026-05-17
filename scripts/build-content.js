@@ -11,6 +11,32 @@ const OUT_FILE = path.join(ROOT, "src", "data", "articles.generated.ts");
 
 const INLINE_SVG_RE = /<inline-svg\s+src="([^"]+)"\s*\/?>(\s*<\/inline-svg>)?/g;
 
+function computeReadingMinutes(markdown) {
+  let text = markdown;
+
+  let codeLines = 0;
+  text = text.replace(/```[^\n]*\n([\s\S]*?)```/g, (_m, code) => {
+    codeLines += code.split("\n").filter((l) => l.trim().length > 0).length;
+    return "";
+  });
+
+  const imageCount = (text.match(/!\[[^\]]*\]\([^)]+\)/g) || []).length;
+  const svgCount = (text.match(/<inline-svg\b[^>]*>/g) || []).length;
+  const mediaCount = imageCount + svgCount;
+
+  text = text.replace(/!\[[^\]]*\]\([^)]+\)/g, "");
+  text = text.replace(/<inline-svg\b[^>]*\/?>/g, "");
+  text = text.replace(/<[^>]+>/g, "");
+
+  const words = (text.match(/[a-zA-Zа-яА-ЯёЁ\d]+/g) || []).length;
+
+  const proseSeconds = (words / 180) * 60;
+  const codeSeconds = codeLines * 3;
+  const mediaSeconds = mediaCount * 10;
+  const total = proseSeconds + codeSeconds + mediaSeconds;
+  return Math.max(1, Math.ceil(total / 60));
+}
+
 function inlineSvgs(body, sourceFile) {
   return body.replace(INLINE_SVG_RE, (_match, src) => {
     const relPath = src.replace(/^\//, "");
@@ -42,8 +68,14 @@ function readArticles() {
       const date = dateValue instanceof Date
         ? dateValue.toISOString().slice(0, 10)
         : String(dateValue).slice(0, 10);
-      const body = inlineSvgs(content.trim(), file);
-      return { slug, title, date, body };
+      const trimmedContent = content.trim();
+      const body = inlineSvgs(trimmedContent, file);
+      const explicit = data.readingMinutes ?? data.reading_time;
+      const readingMinutes =
+        typeof explicit === "number" && explicit > 0
+          ? Math.round(explicit)
+          : computeReadingMinutes(trimmedContent);
+      return { slug, title, date, body, readingMinutes };
     })
     .sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -59,6 +91,7 @@ export type GeneratedArticle = {
   title: string;
   date: string;
   body: string;
+  readingMinutes: number;
 };
 
 export const generatedArticles: GeneratedArticle[] = `;
@@ -68,6 +101,7 @@ export const generatedArticles: GeneratedArticle[] = `;
     title: a.title,
     date: a.date,
     body: a.body,
+    readingMinutes: a.readingMinutes,
   }));
   return header + JSON.stringify(payload, null, 2) + ";\n";
 }

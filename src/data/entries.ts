@@ -6,6 +6,7 @@ export type ArticleEntry = {
   title: string;
   date: string;
   body: string;
+  readingMinutes: number;
 };
 
 export type TalkEntry = {

@@ -69,13 +69,13 @@ function example() {
 
 ### Добавление изображений
 
-1. **Поместите изображение в папку** `public/images/`
+1. **Поместите изображение в папку** `public/images/<slug>/` (одна папка на статью, где `<slug>` совпадает с именем `.md`-файла без расширения)
    
-   Например: `public/images/my-photo.jpg`
+   Например: для статьи `content/articles/my-post.md` фото лежит в `public/images/my-post/my-photo.jpg`
 
 2. **Используйте Markdown синтаксис:**
    ```markdown
-   ![Описание изображения](/images/my-photo.jpg)
+   ![Описание изображения](/images/<slug>/my-photo.jpg)
    ```
 
 ### Примеры

@@ -14,7 +14,7 @@ date: 2025-11-04
 
 ## Прошлый вариант
 
-![Старый](/images/old-site.png)
+![Старый](/images/site-redesign/old-site.png)
 
 Вот эту версию я делал за 4 часа суммарно с помощью Stackoverflow-кодинг. Вооружившись Github Copilot я с помощью Claude (читается как "клод") Sonnet 4.5 отправился в плавание.
 
@@ -33,6 +33,6 @@ date: 2025-11-04
 
 ## Результат
 
-![Новый](/images/new-site.png)
+![Новый](/images/site-redesign/new-site.png)
 
 Как по мне результат получился хороший. Мне нравится.

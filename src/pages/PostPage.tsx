@@ -77,6 +77,7 @@ const PostPage: React.FC = () => {
       <div className="article-meta">
         <span>{fmtDate(post.date)}</span>
         <span>статья</span>
+        <span>{post.readingMinutes} мин</span>
       </div>
       <h1 className="article-title">{post.title}</h1>
       <div className="prose">

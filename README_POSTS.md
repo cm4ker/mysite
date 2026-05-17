@@ -16,10 +16,10 @@ date: 2026-05-16
 
 ## Подзаголовок
 
-![alt](/images/photo.jpg)
+![alt](/images/<slug>/photo.jpg)
 ```
 
-3. Изображения положи в `public/images/`, ссылайся как `/images/file.jpg`.
+3. Изображения положи в `public/images/<slug>/` (одна папка на статью), ссылайся как `/images/<slug>/file.jpg`. SVG-диаграммы можно вынести в отдельный файл и подключить через `<inline-svg src="/images/<slug>/diagram.svg" />` — build-скрипт инлайнит содержимое в выводе, чтобы `currentColor` адаптировался к теме.
 4. Запусти `npm start` — статья появится в ленте, сортировка идёт по дате (новые сверху).
 
 ## Обновить вручную без `start`/`build`
