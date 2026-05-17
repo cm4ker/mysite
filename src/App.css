@@ -381,6 +381,23 @@
   font-weight: 600;
 }
 
+/* ---- Telegram comments ---- */
+.tg-comments {
+  margin: 4em 0 0;
+  padding-top: 2em;
+  border-top: 1px solid var(--rule);
+}
+.tg-comments__title {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 17px;
+  margin: 0 0 1em;
+}
+.tg-comments__widget iframe {
+  max-width: 100%;
+  border: 0;
+}
+
 /* ---- Footer ---- */
 footer.site-footer {
   font-family: var(--mono);

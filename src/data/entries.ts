@@ -7,6 +7,7 @@ export type ArticleEntry = {
   date: string;
   body: string;
   readingMinutes: number;
+  telegramPostId?: number;
 };
 
 export type TalkEntry = {
@@ -33,6 +34,7 @@ export type Profile = {
   email?: string;
   github?: string;
   twitter?: string;
+  telegramChannel?: string;
 };
 
 export const profile: Profile = {
@@ -40,6 +42,7 @@ export const profile: Profile = {
   bio: "Инженер. Пишу про всё, о чём хочу рассказать. Этот сайт — мой блокнот.",
   email: "hi@cm4ker.ru",
   github: "github.com/cm4ker",
+  telegramChannel: "cm4ker_thoughts",
 };
 
 export const entries: Entry[] = [

@@ -1,0 +1,37 @@
+<svg viewBox="0 0 1200 630" width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#26262a" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#16161a"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="0" y="0" width="1200" height="5" fill="#ff8a00"/>
+
+  <text x="64" y="80" fill="#6b6a63" font-family="Consolas, 'Courier New', monospace" font-size="14" letter-spacing="3">N.ZENKOV  ·  СТАТЬЯ  ·  14 МИН</text>
+
+  <text x="64" y="220" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="68">Подключаем RadSens</text>
+  <text x="64" y="300" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="68">к Arduino UNO по I2C</text>
+
+  <text x="64" y="360" fill="#a89e8f" font-family="Consolas, 'Courier New', monospace" font-size="22">сборка за 4 шага · разбор протокола от SDA до ACK</text>
+
+  <g transform="translate(64, 450)">
+    <text x="0" y="14" fill="#6b6a63" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold">SCL</text>
+    <path d="M 60,10 H 100 V 50 H 140 V 10 H 180 V 50 H 220 V 10 H 260 V 50 H 300 V 10 H 340 V 50 H 380 V 10 H 420 V 50 H 460 V 10 H 500 V 50 H 540 V 10 H 580 V 50 H 620 V 10 H 660 V 50 H 700 V 10 H 740 V 50 H 780 V 10 H 820 V 50 H 860 V 10 H 900 V 50 H 940 V 10 H 980 V 50 H 1020 V 10 H 1072"
+          fill="none" stroke="#4a4a4e" stroke-width="2.5"/>
+
+    <text x="0" y="104" fill="#6b6a63" font-family="Consolas, 'Courier New', monospace" font-size="13" font-weight="bold">SDA</text>
+    <path d="M 60,110 H 180 V 90 H 300 V 110 H 380 V 90 H 540 V 110 H 660 V 90 H 780 V 110 H 900 V 90 H 1072"
+          fill="none" stroke="#ff8a00" stroke-width="2.5"/>
+  </g>
+
+  <text x="64" y="592" fill="#6b6a63" font-family="Consolas, 'Courier New', monospace" font-size="14">cm4ker.ru</text>
+
+  <g transform="translate(1056, 56)">
+    <circle cx="40" cy="40" r="10" fill="#ff8a00"/>
+    <path d="M 40,16 A 24,24 0 0 1 60.78,52 L 50.39,46 A 12,12 0 0 0 40,28 Z" fill="#ff8a00"/>
+    <path d="M 60.78,52 A 24,24 0 0 1 19.22,52 L 29.61,46 A 12,12 0 0 0 50.39,46 Z" fill="#ff8a00"/>
+    <path d="M 19.22,52 A 24,24 0 0 1 40,16 L 40,28 A 12,12 0 0 0 29.61,46 Z" fill="#ff8a00"/>
+  </g>
+</svg>

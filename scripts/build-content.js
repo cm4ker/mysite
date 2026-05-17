@@ -75,7 +75,10 @@ function readArticles() {
         typeof explicit === "number" && explicit > 0
           ? Math.round(explicit)
           : computeReadingMinutes(trimmedContent);
-      return { slug, title, date, body, readingMinutes };
+      const tg = data.telegramPostId ?? data.telegram_post_id;
+      const telegramPostId =
+        typeof tg === "number" && Number.isFinite(tg) && tg > 0 ? tg : undefined;
+      return { slug, title, date, body, readingMinutes, telegramPostId };
     })
     .sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -92,17 +95,22 @@ export type GeneratedArticle = {
   date: string;
   body: string;
   readingMinutes: number;
+  telegramPostId?: number;
 };
 
 export const generatedArticles: GeneratedArticle[] = `;
-  const payload = articles.map((a) => ({
-    type: "article",
-    slug: a.slug,
-    title: a.title,
-    date: a.date,
-    body: a.body,
-    readingMinutes: a.readingMinutes,
-  }));
+  const payload = articles.map((a) => {
+    const out = {
+      type: "article",
+      slug: a.slug,
+      title: a.title,
+      date: a.date,
+      body: a.body,
+      readingMinutes: a.readingMinutes,
+    };
+    if (a.telegramPostId !== undefined) out.telegramPostId = a.telegramPostId;
+    return out;
+  });
   return header + JSON.stringify(payload, null, 2) + ";\n";
 }
 

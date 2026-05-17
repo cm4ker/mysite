@@ -4,9 +4,10 @@ import ReactMarkdown, { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
-import { entries } from "../data/entries";
+import { entries, profile } from "../data/entries";
 import { fmtDate } from "../lib/date";
 import Lightbox from "../components/Lightbox";
+import TelegramComments from "../components/TelegramComments";
 
 type LightboxState = { src: string; alt?: string } | null;
 
@@ -89,6 +90,12 @@ const PostPage: React.FC = () => {
           {post.body}
         </ReactMarkdown>
       </div>
+      {profile.telegramChannel && post.telegramPostId && (
+        <TelegramComments
+          channel={profile.telegramChannel}
+          postId={post.telegramPostId}
+        />
+      )}
       {lightbox && (
         <Lightbox
           src={lightbox.src}
