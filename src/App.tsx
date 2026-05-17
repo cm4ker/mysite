@@ -15,18 +15,26 @@ function readInitialTheme(): Theme {
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(readInitialTheme);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("mysite-theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
 
   return (
     <Router>
-      <div className="page">
-        <div className="top">
+      <header className={`topbar${scrolled ? " topbar--scrolled" : ""}`}>
+        <div className="topbar-inner">
           <div className="left">
             <Link to="/">{profile.name.toLowerCase()}</Link>
           </div>
@@ -36,7 +44,9 @@ const App: React.FC = () => {
             </button>
           </div>
         </div>
+      </header>
 
+      <div className="page">
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
