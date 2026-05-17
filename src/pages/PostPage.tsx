@@ -1,8 +1,39 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { Components } from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import { entries } from "../data/entries";
 import { fmtDate } from "../lib/date";
+
+const markdownComponents: Components = {
+  a: ({ href, children, ...rest }) => {
+    if (href && href.startsWith("#")) {
+      const targetId = decodeURIComponent(href.slice(1));
+      return (
+        <a
+          href={href}
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById(targetId);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }}
+          {...rest}
+        >
+          {children}
+        </a>
+      );
+    }
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
+    );
+  },
+};
 
 const PostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -30,7 +61,13 @@ const PostPage: React.FC = () => {
       </div>
       <h1 className="article-title">{post.title}</h1>
       <div className="prose">
-        <ReactMarkdown>{post.body}</ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw, rehypeSlug]}
+          components={markdownComponents}
+        >
+          {post.body}
+        </ReactMarkdown>
       </div>
     </>
   );

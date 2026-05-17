@@ -276,6 +276,23 @@
   margin: 1.2em 0;
   border: 1px solid var(--rule);
 }
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 14px;
+}
+.prose th,
+.prose td {
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  background: var(--rule);
+  font-weight: 600;
+}
 
 /* ---- Footer ---- */
 footer.site-footer {
