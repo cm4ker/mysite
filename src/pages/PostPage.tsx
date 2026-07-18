@@ -13,6 +13,26 @@ import BanditDemo from "../components/BanditDemo";
 
 type LightboxState = { src: string; alt?: string } | null;
 
+const MarginErrorTip: React.FC = () => (
+  <span className="stat-tip">
+    <button
+      type="button"
+      className="stat-tip__mark"
+      aria-label="Показать расчёт статистической погрешности"
+      aria-describedby="margin-error-tooltip"
+    >
+      ?
+    </button>
+    <span id="margin-error-tooltip" className="stat-tip__bubble" role="tooltip">
+      <strong>Откуда взялись ±5,7 пункта</strong>
+      <span>Если несколько раз провести турнир по 300 партий, винрейт каждый раз будет немного отличаться просто из-за случайности.</span>
+      <span>Обычный случайный разброс для 300 наблюдений — около 2,9 процентного пункта. Для привычного 95%-го диапазона берут примерно два таких разброса.</span>
+      <code>2,9 × почти 2 ≈ 5,7</code>
+      <span>То есть настоящий винрейт с большой вероятностью находится примерно в пределах ±5,7 пункта от результата турнира.</span>
+    </span>
+  </span>
+);
+
 const PostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = entries.find((e) => e.type === "article" && e.slug === slug);
@@ -63,6 +83,7 @@ const PostPage: React.FC = () => {
     const custom = map as Record<string, unknown>;
     custom["pi-demo"] = () => <PiDemo />;
     custom["bandit-demo"] = () => <BanditDemo />;
+    custom["margin-error-tip"] = () => <MarginErrorTip />;
     return map;
   }, []);
 

@@ -381,6 +381,69 @@
   font-weight: 600;
 }
 
+/* ---- Inline statistical explanation ---- */
+.stat-tip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: 0.08em;
+  margin-left: 3px;
+}
+.stat-tip__mark {
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: 1px solid var(--fg-faint);
+  border-radius: 50%;
+  background: color-mix(in oklch, var(--fg) 4%, var(--bg));
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 15px;
+  cursor: help;
+}
+.stat-tip__mark:hover,
+.stat-tip__mark:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+.stat-tip__bubble {
+  position: absolute;
+  right: -12px;
+  bottom: calc(100% + 10px);
+  z-index: 20;
+  display: grid;
+  gap: 7px;
+  width: min(340px, calc(100vw - 44px));
+  padding: 13px 15px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--fg-dim);
+  box-shadow: 0 10px 32px color-mix(in oklch, var(--fg) 16%, transparent);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+.stat-tip__bubble strong { color: var(--fg); font-weight: 600; }
+.prose .stat-tip__bubble code {
+  display: block;
+  padding: 7px 8px;
+  white-space: normal;
+  color: var(--fg);
+}
+.stat-tip:hover .stat-tip__bubble,
+.stat-tip:focus-within .stat-tip__bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* ---- Telegram comments ---- */
 .tg-comments {
   margin: 4em 0 0;
