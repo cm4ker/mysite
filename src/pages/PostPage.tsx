@@ -8,6 +8,8 @@ import { entries, profile } from "../data/entries";
 import { fmtDate } from "../lib/date";
 import Lightbox from "../components/Lightbox";
 import TelegramComments from "../components/TelegramComments";
+import PiDemo from "../components/PiDemo";
+import BanditDemo from "../components/BanditDemo";
 
 type LightboxState = { src: string; alt?: string } | null;
 
@@ -16,8 +18,8 @@ const PostPage: React.FC = () => {
   const post = entries.find((e) => e.type === "article" && e.slug === slug);
   const [lightbox, setLightbox] = useState<LightboxState>(null);
 
-  const components = useMemo<Components>(
-    () => ({
+  const components = useMemo<Components>(() => {
+    const map: Components = {
       a: ({ href, children, ...rest }) => {
         if (href && href.startsWith("#")) {
           const targetId = decodeURIComponent(href.slice(1));
@@ -55,9 +57,14 @@ const PostPage: React.FC = () => {
           {...rest}
         />
       ),
-    }),
-    [],
-  );
+    };
+    // Кастомные теги из тела статьи → React-компоненты.
+    // Тип Components не знает нестандартных тегов, поэтому вешаем ключи в обход типов.
+    const custom = map as Record<string, unknown>;
+    custom["pi-demo"] = () => <PiDemo />;
+    custom["bandit-demo"] = () => <BanditDemo />;
+    return map;
+  }, []);
 
   if (!post || post.type !== "article") {
     return (
