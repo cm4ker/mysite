@@ -90,6 +90,14 @@ function example() {
 ![Диаграмма архитектуры системы, показывающая взаимодействие компонентов](/images/architecture.png)
 ```
 
+**Изображение с подписью:**
+```html
+<figure class="article-figure">
+  <img src="/images/my-post/photo.jpg" alt="Описание изображения" />
+  <figcaption>Подпись к изображению</figcaption>
+</figure>
+```
+
 ### Рекомендации по изображениям
 
 - **Формат:** Используйте JPG для фотографий, PNG для скриншотов и графики
