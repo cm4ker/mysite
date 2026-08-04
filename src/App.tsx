@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import PostPage from "./pages/PostPage";
+import Aquarium, { MINI_FISH } from "./components/Aquarium";
 import { profile } from "./data/entries";
 
 type Theme = "light" | "dark";
@@ -16,6 +17,7 @@ function readInitialTheme(): Theme {
 const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(readInitialTheme);
   const [scrolled, setScrolled] = useState(false);
+  const [aquarium, setAquarium] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -33,6 +35,8 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <Aquarium active={aquarium} />
+
       <header className={`topbar${scrolled ? " topbar--scrolled" : ""}`}>
         <div className="topbar-inner">
           <div className="left">
@@ -41,6 +45,15 @@ const App: React.FC = () => {
           <div className="right">
             <button onClick={toggleTheme} title="Тема">
               {theme}
+            </button>
+            <button
+              className={`fish-btn${aquarium ? " fish-btn--on" : ""}`}
+              onClick={() => setAquarium((a) => !a)}
+              title="Аквариум"
+              aria-label="Аквариум"
+              aria-pressed={aquarium}
+            >
+              {MINI_FISH}
             </button>
           </div>
         </div>

@@ -55,6 +55,115 @@
 .topbar a:hover,
 .topbar button:hover { color: var(--fg); }
 .topbar .left { display: flex; gap: 18px; }
+.topbar .right { display: flex; align-items: center; gap: 14px; }
+
+/* ---- Aquarium (кнопка с рыбкой) ---- */
+.topbar .fish-btn {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1;
+}
+/* .topbar button задаёт font/background, поэтому селекторы здесь той же силы */
+.topbar .fish-btn--on {
+  background: linear-gradient(
+    90deg,
+    #ff2d55, #ff9500, #ffd60a, #34c759, #32ade6, #5e5ce6
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: aq-rainbow 6s linear infinite;
+}
+
+.aquarium {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.aquarium__water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 20%, transparent),
+    color-mix(in srgb, var(--accent) 46%, transparent)
+  );
+  transition: height 1.1s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.aquarium--filled .aquarium__water { height: 100%; }
+.aquarium__wave {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  width: 200%;
+  height: 18px;
+  fill: color-mix(in srgb, var(--accent) 20%, transparent);
+  animation: aq-wave 5s linear infinite;
+}
+.aquarium__bubble {
+  position: absolute;
+  bottom: -3%;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  animation-name: aq-bubble;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+/* положение и разворот считает JS (Aquarium.tsx), здесь только внешний вид */
+.aquarium__swimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: transform;
+}
+.aquarium__fish {
+  margin: 0;
+  font-family: var(--mono);
+  line-height: 0.95;
+  white-space: pre;
+  /* радуга целиком по телу рыбки, hue-rotate заставляет её переливаться */
+  background: linear-gradient(
+    90deg,
+    #ff2d55, #ff9500, #ffd60a, #34c759, #32ade6, #5e5ce6
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* мягкий ореол — иначе на светлой воде точки теряются */
+  text-shadow: 0 0 6px color-mix(in srgb, var(--fg) 20%, transparent);
+  animation: aq-rainbow 6s linear infinite;
+}
+
+@keyframes aq-wave {
+  to { transform: translateX(-50%); }
+}
+@keyframes aq-bubble {
+  0%   { transform: translate(0, 0) scale(0.8); opacity: 0; }
+  12%  { transform: translate(calc(var(--aq-drift, 9px) * 0.15), -12vh) scale(1); opacity: var(--aq-op, 0.5); }
+  85%  { opacity: var(--aq-op, 0.5); }
+  100% { transform: translate(var(--aq-drift, 9px), -104vh) scale(1.1); opacity: 0; }
+}
+@keyframes aq-rainbow {
+  from { filter: hue-rotate(0deg) saturate(1.35); }
+  to   { filter: hue-rotate(360deg) saturate(1.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aquarium__wave { animation: none; }
+  .aquarium__bubble { animation-duration: 40s; }
+  .aquarium__fish { animation: aq-rainbow 12s linear infinite; }
+  .aquarium__water { transition-duration: 0.4s; }
+}
 
 /* ---- Header (home) ---- */
 .header h1 {
