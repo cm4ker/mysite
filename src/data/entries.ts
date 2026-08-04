@@ -39,7 +39,7 @@ export type Profile = {
 
 export const profile: Profile = {
   name: "N.Zenkov",
-  bio: "Инженер. Пишу про всё, о чём хочу рассказать. Этот сайт — мой блокнот.",
+  bio: "Инженер. Пишу про всё, о чём хочу рассказать.",
   email: "hi@cm4ker.ru",
   github: "github.com/cm4ker",
   telegramChannel: "cm4ker_thoughts",
