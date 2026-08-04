@@ -26,7 +26,15 @@ export type WorkEntry = {
   until?: string | null;
 };
 
-export type Entry = ArticleEntry | TalkEntry | WorkEntry;
+export type EducationEntry = {
+  type: "education";
+  title: string;
+  program?: string;
+  date: string;
+  until?: string | null;
+};
+
+export type Entry = ArticleEntry | TalkEntry | WorkEntry | EducationEntry;
 
 export type Profile = {
   name: string;
@@ -101,6 +109,20 @@ export const entries: Entry[] = [
     company: "Medexport",
     date: "2011-01-01",
     until: "2013-04-01",
+  },
+  {
+    type: "education",
+    title: "ОмГУ им. Ф. М. Достоевского",
+    program: "09.03.01 Информатика и вычислительная техника",
+    date: "2012-09-01",
+    until: "2016-03-04",
+  },
+  {
+    type: "education",
+    title: "Торгово-экономический колледж им. Г. Д. Зуйковой",
+    program: "Автоматизированные системы обработки информации и управления",
+    date: "2008-09-01",
+    until: "2012-06-29",
   },
   ...generatedArticles,
 ];

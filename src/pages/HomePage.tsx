@@ -11,6 +11,7 @@ const FILTER_DEF: Array<[Filter, string]> = [
   ["article", "статьи"],
   ["talk", "выступления"],
   ["work", "работа"],
+  ["education", "образование"],
 ];
 
 const HomePage: React.FC = () => {

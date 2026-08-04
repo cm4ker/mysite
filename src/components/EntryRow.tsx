@@ -7,6 +7,7 @@ const TYPE_LABEL: Record<Entry["type"], string> = {
   article: "статья",
   talk: "выступление",
   work: "работа",
+  education: "образование",
 };
 
 type Props = { entry: Entry };
@@ -55,14 +56,15 @@ const EntryRow: React.FC<Props> = ({ entry }) => {
     );
   }
 
-  // work
+  // work / education — период и подпись
   const period = `${fmtMonth(entry.date)} — ${entry.until ? fmtMonth(entry.until) : "сейчас"}`;
+  const sub = entry.type === "work" ? entry.company : entry.program;
   return (
     <li className="entry-row">
       <span className="entry-date">{period}</span>
       <span>
         <span className="entry-title">{entry.title}</span>
-        <div className="entry-sub">{entry.company}</div>
+        {sub && <div className="entry-sub">{sub}</div>}
       </span>
       {tag}
     </li>
