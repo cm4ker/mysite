@@ -11,8 +11,8 @@
 
   <text x="64" y="80" fill="#6b6a63" font-family="Consolas, 'Courier New', monospace" font-size="14" letter-spacing="3">N.ZENKOV  ·  СТАТЬЯ  ·  17 МИН</text>
 
-  <text x="64" y="210" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="56">Как меня обыграли в «Сундук войны»</text>
-  <text x="64" y="282" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="56">и я решил написать <tspan fill="#ff8a00">AlphaZero</tspan></text>
+  <text x="64" y="210" transform="translate(0 21) scale(1 0.9)" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="56">Как меня обыграли в Сундук войны</text>
+  <text x="64" y="274" transform="translate(0 27.4) scale(1 0.9)" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="56">и я решил написать <tspan fill="#ff8a00">AlphaZero</tspan></text>
 
   <text x="64" y="340" fill="#a89e8f" font-family="Consolas, 'Courier New', monospace" font-size="22">движок на C# · Монте-Карло · нейросети · тир-лист юнитов</text>
 

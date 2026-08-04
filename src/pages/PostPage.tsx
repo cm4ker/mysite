@@ -10,6 +10,8 @@ import Lightbox from "../components/Lightbox";
 import TelegramComments from "../components/TelegramComments";
 import PiDemo from "../components/PiDemo";
 import BanditDemo from "../components/BanditDemo";
+import OmskAnnualChart from "../components/OmskAnnualChart";
+import OmskMonthlyNormals from "../components/OmskMonthlyNormals";
 
 type LightboxState = { src: string; alt?: string } | null;
 
@@ -84,6 +86,8 @@ const PostPage: React.FC = () => {
     custom["pi-demo"] = () => <PiDemo />;
     custom["bandit-demo"] = () => <BanditDemo />;
     custom["margin-error-tip"] = () => <MarginErrorTip />;
+    custom["omsk-annual"] = () => <OmskAnnualChart />;
+    custom["omsk-monthly"] = () => <OmskMonthlyNormals />;
     return map;
   }, []);
 
