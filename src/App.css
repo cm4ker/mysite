@@ -834,6 +834,15 @@ footer.site-footer {
   height: 0;
   border-top: 2px solid currentColor;
 }
+/* столбики вверх/вниз от нулевой линии; цвета приходят из компонента по метрике */
+.wx__key--bars::before {
+  width: 16px;
+  height: 14px;
+  border-top: 0;
+  background:
+    linear-gradient(var(--k-up), var(--k-up)) 0 0 / 6px 7px no-repeat,
+    linear-gradient(var(--k-down), var(--k-down)) 10px 7px / 6px 5px no-repeat;
+}
 .wx__key--zero::before { border-top: 1px solid color-mix(in oklch, var(--fg) 45%, transparent); }
 .wx__key--smooth::before { border-top-color: var(--fg); }
 .wx__key--trend::before { border-top: 2px dashed var(--accent); }

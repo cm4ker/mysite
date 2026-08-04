@@ -215,10 +215,24 @@ const OmskAnnualChart: React.FC = () => {
       </svg>
 
       <figcaption className="wx__legend">
-        <span className="wx__key wx__key--zero">норма 1941—1970: {fmt(norm, metric.digits)} {metric.unit}</span>
-        <span className="wx__key wx__key--smooth">среднее за 11 лет</span>
+        <span
+          className="wx__key wx__key--bars"
+          style={
+            {
+              "--k-up": `oklch(63% 0.15 ${metric.hueUp})`,
+              "--k-down": `oklch(63% 0.15 ${metric.hueDown})`,
+            } as React.CSSProperties
+          }
+        >
+          столбик — отклонение года от нормы
+        </span>
+        <span className="wx__key wx__key--zero">
+          норма 1941—1970: {fmt(norm, metric.digits)} {metric.unit}
+        </span>
+        <span className="wx__key wx__key--smooth">линия — среднее за 11 лет</span>
         <span className="wx__key wx__key--trend">
-          тренд с {metric.trendFrom}: {signed(trend.perDecade, metric.digits === 0 ? 0 : 2)} {metric.unit} за 10 лет
+          пунктир — тренд с {metric.trendFrom}: {signed(trend.perDecade, metric.digits === 0 ? 0 : 2)} {metric.unit} за
+          10 лет
         </span>
       </figcaption>
     </figure>

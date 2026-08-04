@@ -20,7 +20,7 @@
   <text x="64" y="80" fill="#6b6a63" font-family="Consolas, 'Courier New', monospace" font-size="14" letter-spacing="3">N.ZENKOV  ·  СТАТЬЯ  ·  7 МИН</text>
 
   <text x="64" y="220" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="68">110 лет погоды Омска:</text>
-  <text x="64" y="300" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="68">всё <tspan fill="#ff8a00">теплеет</tspan></text>
+  <text x="64" y="300" fill="#e8e4dc" font-family="'Segoe UI', Tahoma, sans-serif" font-weight="700" font-size="68">все <tspan fill="#ff8a00">на взлёт!</tspan></text>
 
   <text x="64" y="360" fill="#a89e8f" font-family="Consolas, 'Courier New', monospace" font-size="22">дашборд на Blazor WASM · 40 118 дней · 1916—2026</text>
 
