@@ -422,6 +422,10 @@
   width: 100%;
   margin: 0;
 }
+.prose .article-figure--narrow img {
+  max-width: 440px;
+  margin: 0 auto;
+}
 .prose .article-figure figcaption {
   margin-top: 0.55rem;
   color: var(--fg-dim);
