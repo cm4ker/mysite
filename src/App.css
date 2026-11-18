@@ -83,6 +83,7 @@
   pointer-events: none;
   overflow: hidden;
 }
+/* Вода наливается снизу: это и переход в режим, и первая волна на экране. */
 .aquarium__water {
   position: absolute;
   left: 0;
@@ -91,8 +92,9 @@
   height: 0;
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--accent) 20%, transparent),
-    color-mix(in srgb, var(--accent) 46%, transparent)
+    var(--aq-water-top),
+    var(--aq-water-mid) 55%,
+    var(--aq-water-bottom)
   );
   transition: height 1.1s cubic-bezier(0.33, 1, 0.68, 1);
 }
@@ -103,55 +105,30 @@
   bottom: 100%;
   width: 200%;
   height: 18px;
-  fill: color-mix(in srgb, var(--accent) 20%, transparent);
+  fill: color-mix(in srgb, var(--accent) 14%, transparent);
   animation: aq-wave 5s linear infinite;
 }
-.aquarium__bubble {
+/*
+ * Сцена рисуется клетками по сетке, поэтому миллиметровка лежит на самом canvas:
+ * её шаг равен клетке сцены (--aq-cell выставляет AquariumScene).
+ */
+.aquarium__canvas {
   position: absolute;
-  bottom: -3%;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
-  animation-name: aq-bubble;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-/* положение и разворот считает JS (Aquarium.tsx), здесь только внешний вид */
-.aquarium__swimmer {
-  position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(to right, var(--aq-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--aq-grid) 1px, transparent 1px);
+  background-size: var(--aq-cell, 10px) var(--aq-cell, 10px);
   opacity: 0;
-  transition: opacity 0.6s ease;
-  will-change: transform;
+  transition: opacity 1s ease 0.25s;
 }
-.aquarium__fish {
-  margin: 0;
-  font-family: var(--mono);
-  line-height: 0.95;
-  white-space: pre;
-  /* радуга целиком по телу рыбки, hue-rotate заставляет её переливаться */
-  background: linear-gradient(
-    90deg,
-    #ff2d55, #ff9500, #ffd60a, #34c759, #32ade6, #5e5ce6
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  /* мягкий ореол — иначе на светлой воде точки теряются */
-  text-shadow: 0 0 6px color-mix(in srgb, var(--fg) 20%, transparent);
-  animation: aq-rainbow 6s linear infinite;
-}
+.aquarium--filled .aquarium__canvas { opacity: 1; }
 
 @keyframes aq-wave {
   to { transform: translateX(-50%); }
-}
-@keyframes aq-bubble {
-  0%   { transform: translate(0, 0) scale(0.8); opacity: 0; }
-  12%  { transform: translate(calc(var(--aq-drift, 9px) * 0.15), -12vh) scale(1); opacity: var(--aq-op, 0.5); }
-  85%  { opacity: var(--aq-op, 0.5); }
-  100% { transform: translate(var(--aq-drift, 9px), -104vh) scale(1.1); opacity: 0; }
 }
 @keyframes aq-rainbow {
   from { filter: hue-rotate(0deg) saturate(1.35); }
@@ -160,9 +137,26 @@
 
 @media (prefers-reduced-motion: reduce) {
   .aquarium__wave { animation: none; }
-  .aquarium__bubble { animation-duration: 40s; }
-  .aquarium__fish { animation: aq-rainbow 12s linear infinite; }
   .aquarium__water { transition-duration: 0.4s; }
+  .aquarium__canvas { transition-duration: 0.3s; }
+}
+
+/*
+ * Пока аквариум включён, у мелких служебных подписей появляется ореол цвета
+ * фона: он отделяет буквы от клеток, не превращая их в плашки.
+ */
+html[data-aquarium="on"] .section-label,
+html[data-aquarium="on"] .entry-date,
+html[data-aquarium="on"] .entry-tag,
+html[data-aquarium="on"] .entry-arrow,
+html[data-aquarium="on"] .filters,
+html[data-aquarium="on"] .cal-head,
+html[data-aquarium="on"] .article-meta,
+html[data-aquarium="on"] .back,
+html[data-aquarium="on"] footer.site-footer {
+  text-shadow:
+    0 0 7px var(--bg),
+    0 0 3px var(--bg);
 }
 
 /* ---- Header (home) ---- */

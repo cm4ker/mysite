@@ -24,6 +24,17 @@ const App: React.FC = () => {
     localStorage.setItem("mysite-theme", theme);
   }, [theme]);
 
+  // Пока сцена включена, мелкие подписи (даты, теги, «Записи») должны быть
+  // контрастнее и с ореолом — иначе краска аквариума их съедает.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (aquarium) {
+      root.setAttribute("data-aquarium", "on");
+    } else {
+      root.removeAttribute("data-aquarium");
+    }
+  }, [aquarium]);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -35,7 +46,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <Aquarium active={aquarium} />
+      <Aquarium active={aquarium} theme={theme} />
 
       <header className={`topbar${scrolled ? " topbar--scrolled" : ""}`}>
         <div className="topbar-inner">

@@ -9,6 +9,12 @@
   --rule:      #e3dfd2;
   --accent:    oklch(58% 0.13 250);
   --selection: oklch(85% 0.06 250);
+
+  /* аквариум: вода и бумажная миллиметровка под ней */
+  --aq-water-top:    #f6f4ee;
+  --aq-water-mid:    #edf1ec;
+  --aq-water-bottom: #e3eae6;
+  --aq-grid:         rgba(120, 112, 90, 0.09);
 }
 
 html[data-theme="dark"] {
@@ -19,6 +25,20 @@ html[data-theme="dark"] {
   --rule:      #26262c;
   --accent:    oklch(72% 0.13 250);
   --selection: oklch(35% 0.08 250);
+
+  --aq-water-top:    #171b22;
+  --aq-water-mid:    #121c24;
+  --aq-water-bottom: #0c1a20;
+  --aq-grid:         rgba(160, 182, 205, 0.055);
+}
+
+/*
+ * Аквариум: мелкие подписи (даты, теги, служебные заголовки) над сценой
+ * поднимаем по контрасту. Иначе приглушённый серый сливается с клетками.
+ */
+html[data-theme][data-aquarium="on"] {
+  --fg-faint: color-mix(in srgb, var(--fg) 72%, var(--bg));
+  --fg-dim:   color-mix(in srgb, var(--fg) 86%, var(--bg));
 }
 
 * { box-sizing: border-box; }

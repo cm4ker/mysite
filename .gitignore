@@ -24,3 +24,6 @@ yarn-error.log*
 
 # generated content
 /src/data/articles.generated.ts
+
+# локальные превью для обсуждения дизайна
+/shots
